@@ -1,0 +1,27 @@
+<!DOCTYPE>
+<html lang="en">
+<head>
+    <title>번역기 과제</title>
+</head>
+
+<script src="./lib/hangul.min.js"></script>
+<script type="text/javascript">
+    function translate(str) {
+        return str.split('').map(function(s) {
+            var w = Hangul.disassemble(s);
+
+            if(w[3] && Hangul.isVowel(w[1]) && Hangul.isVowel(w[2])) {
+
+            }
+
+            return Hangul.assemble(s);
+        }).join('');
+    }
+</script>
+
+<body>
+    <textarea id="ta"></textarea><br/>
+    <button>번역</button>
+    <div id="result"></div>
+</body>
+</html>
