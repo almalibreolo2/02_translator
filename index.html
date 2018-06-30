@@ -11,17 +11,26 @@
             var w = Hangul.disassemble(s);
 
             if(w[3] && Hangul.isVowel(w[1]) && Hangul.isVowel(w[2])) {
-
+                let tmp = w[2];
+                w[2] = w[3];
+                w[3] = tmp;
             }
 
-            return Hangul.assemble(s);
+            return Hangul.assemble(w);
         }).join('');
     }
+
+    window.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('.btnTranslate').addEventListener('click', function() {
+            var inputText = document.getElementById('ta').value;
+            document.getElementById("result").innerHTML = translate(inputText);
+        });
+    })
 </script>
 
 <body>
     <textarea id="ta"></textarea><br/>
-    <button>번역</button>
+    <button class="btnTranslate">번역</button>
     <div id="result"></div>
 </body>
 </html>
